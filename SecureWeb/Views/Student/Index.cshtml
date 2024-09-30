@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "Student Page";
+}
+
+@model IEnumerable<SecureWeb.Models.Mahasiswa>
+
+<div class="text-center">
+    <h1 class="display-4">Student</h1>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn bg-light border border-1 shadow-lg" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                + Mahasiswa
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row py-2">
+    <div class="col-12">
+        <div class="card rounded-lg shadow-lg">
+            <h5 class="card-title px-4 pt-4">
+                Data Mahasiswa
+            </h5>
+            <div class="card-body px-4 pt-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">NIM</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Alamat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ToList())
+                        {
+                             <tr>
+                                <th scope="row">@(@Model.ToList().IndexOf(item) + 1)</th>
+                                <td>@item.Nim</td>
+                                <td>@item.Nama</td>
+                                <td>@item.Alamat</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form asp-action="Create">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="inputnim" class="form-label">NIM</label>
+                        <input name="Nim" class="form-control" id="inputnim" 
+                            placeholder="Example : 72210000">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputnama" class="form-label">Nama</label>
+                        <input name="Nama" class="form-control" id="inputnama" placeholder="Your Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputalamat" class="form-label">Alamat</label>
+                        <input name="Alamat" class="form-control" id="inputalamat" placeholder="Jl. bla bla bla">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" value="Create">Tambah Mahasiswa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
