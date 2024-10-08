@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using SecureWeb.Data;
+using SecureWeb.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,18 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+.AddCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+});
+
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+
 builder.Services.AddScoped<IMahasiswa, DataMahasiswa>();
+builder.Services.AddScoped<IUser, UserData>();
+builder.Services.AddScoped<EmailService>();
 
 var app = builder.Build();
 
@@ -26,10 +39,18 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "confirmEmail",
+    pattern: "confirm-email",
+    defaults: new { controller = "Account", action = "ConfirmEmail" });
+
+
 
 app.Run();

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Coding\\KTI\\SecureWeb\\SecureWeb.csproj": {}
+    "D:\\Coding\\KTI\\learn-secure-web\\SecureWeb\\SecureWeb.csproj": {}
   },
   "projects": {
-    "D:\\Coding\\KTI\\SecureWeb\\SecureWeb.csproj": {
+    "D:\\Coding\\KTI\\learn-secure-web\\SecureWeb\\SecureWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\KTI\\SecureWeb\\SecureWeb.csproj",
+        "projectUniqueName": "D:\\Coding\\KTI\\learn-secure-web\\SecureWeb\\SecureWeb.csproj",
         "projectName": "SecureWeb",
-        "projectPath": "D:\\Coding\\KTI\\SecureWeb\\SecureWeb.csproj",
+        "projectPath": "D:\\Coding\\KTI\\learn-secure-web\\SecureWeb\\SecureWeb.csproj",
         "packagesPath": "C:\\Users\\School - PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\KTI\\SecureWeb\\obj\\",
+        "outputPath": "D:\\Coding\\KTI\\learn-secure-web\\SecureWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\School - PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,6 +43,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "target": "Package",
               "version": "[8.0.8, )"
@@ -54,6 +58,14 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1.24431.7, )"
+            },
+            "System.Data.Common": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [

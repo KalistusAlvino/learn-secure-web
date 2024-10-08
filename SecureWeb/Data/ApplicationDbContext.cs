@@ -14,5 +14,6 @@ namespace SecureWeb.Data
 
         }
         public DbSet<Mahasiswa> Mahasiswas { get; set;} = null!;
+        public DbSet<User> Users { get; set; } = null!;
     }
 }
